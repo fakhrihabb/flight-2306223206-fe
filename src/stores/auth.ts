@@ -108,6 +108,7 @@ export const useAuthStore = defineStore('auth', () => {
         `Domain=${AUTH_CONFIG.cookieDomain}`,
         'Path=/',
         'SameSite=Lax',
+        'Secure',
         'Max-Age=86400', // 24 hours (matches JWT expiration)
       ].join('; ');
 
@@ -135,7 +136,7 @@ export const useAuthStore = defineStore('auth', () => {
 
     if (AUTH_CONFIG.useCookieAuth) {
       // Production: Delete cookie
-      document.cookie = `jwt_token=; Domain=${AUTH_CONFIG.cookieDomain}; Path=/; Max-Age=0`;
+      document.cookie = `jwt_token=; Domain=${AUTH_CONFIG.cookieDomain}; Path=/; Secure; Max-Age=0`;
 
       if (import.meta.env.DEV) {
         console.log('[Auth Store] Cleared token from cookie');
