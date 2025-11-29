@@ -1,0 +1,14 @@
+{
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ],
+  "env": {
+    "VITE_USE_COOKIE_AUTH": "true",
+    "VITE_COOKIE_DOMAIN": ".fakhrihabb.dev",
+    "VITE_AUTH_DOMAIN": "https://accommodation.fakhrihabb.dev",
+    "VITE_API_URL": "http://2306223206-be.hafizmuh.site"
+  }
+}

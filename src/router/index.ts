@@ -47,7 +47,7 @@ const router = createRouter({
  * 4. Check role-based access (if specified)
  * 5. Redirect to login if not authenticated
  */
-router.beforeEach(async (to, from, next) => {
+router.beforeEach(async (to, _from, next) => {
   const authStore = useAuthStore()
 
   // Step 1: Extract token from URL if present (development mode)

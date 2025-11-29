@@ -84,7 +84,7 @@ export const useFlightStore = defineStore('flight', () => {
       myBookings.value.unshift(booking);
 
       // Update available seats for the flight
-      const flight = flights.value.find((f) => f.id === flightId);
+      const flight = flights.value.find((f: Flight) => f.id === flightId);
       if (flight) {
         flight.availableSeats -= numberOfSeats;
       }
@@ -116,7 +116,7 @@ export const useFlightStore = defineStore('flight', () => {
     error.value = null;
     try {
       const updatedFlight = await flightApi.updateFlight(flightId, updates);
-      const index = flights.value.findIndex((f) => f.id === flightId);
+      const index = flights.value.findIndex((f: Flight) => f.id === flightId);
       if (index !== -1) {
         flights.value[index] = updatedFlight;
       }
@@ -138,7 +138,7 @@ export const useFlightStore = defineStore('flight', () => {
     error.value = null;
     try {
       await flightApi.deleteFlight(flightId);
-      flights.value = flights.value.filter((f) => f.id !== flightId);
+      flights.value = flights.value.filter((f: Flight) => f.id !== flightId);
     } catch (err: any) {
       error.value = err.response?.data?.message || 'Failed to delete flight';
       console.error('Error deleting flight:', err);
